@@ -20,4 +20,23 @@ func TestNewTask(t *testing.T) {
 	}
 }
 
+func TestSaveOneTaskAndGetOne(t *testing.T) {
+	task, err := NewTask("My task")
+	if err != nil {
+		t.Errorf("New task : %v", err)
+	}
+
+	taskManager := NewTaskManager()
+	taskManager.save(task)
+
+	allTask := taskManager.GetAll()
+	if len(allTask) != 1 {
+		t.Errorf("Expected 1 task, got %v", len(allTask))
+	}
+
+	if *allTask[0] != *task {
+		t.Errorf("Expected %v, got %v", task, allTask)
+	}
+}
+
 

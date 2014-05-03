@@ -14,3 +14,20 @@ func NewTask(title string) (*Task, error) {
 	}
 	return &Task{0, title, false}, nil
 }
+
+
+type TaskManager struct {
+	task *Task
+}
+
+func NewTaskManager() *TaskManager {
+	return &TaskManager{}
+}
+
+func (taskManager *TaskManager) save(task *Task) {
+	taskManager.task = task
+}
+
+func (taskManager *TaskManager) GetAll() []*Task {
+	return []*Task{taskManager.task}
+}
