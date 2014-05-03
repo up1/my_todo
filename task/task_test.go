@@ -112,7 +112,6 @@ func TestSaveAndFindByID(t *testing.T) {
 	}
 }
 
-
 func TestSaveFindAndEdit(t *testing.T) {
 	task, err := NewTask("My task")
 	if err != nil {

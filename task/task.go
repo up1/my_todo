@@ -16,7 +16,7 @@ func NewTask(title string) (*Task, error) {
 }
 
 type TaskManager struct {
-	tasks []*Task
+	tasks  []*Task
 	lastID int64
 }
 
@@ -37,7 +37,7 @@ func (taskManager *TaskManager) save(task *Task) error {
 			taskManager.tasks[i] = cloneTask(task)
 			return nil
 		}
-	}	
+	}
 	return fmt.Errorf("Unknown task")
 }
 
