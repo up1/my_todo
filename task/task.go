@@ -36,3 +36,12 @@ func (taskManager *TaskManager) save(task *Task) {
 func (taskManager *TaskManager) GetAll() []*Task {
 	return taskManager.tasks
 }
+
+func (taskManager *TaskManager) Find(ID int64) (*Task, bool) {
+	for _, task := range taskManager.tasks {
+		if task.ID == ID {
+			return task, true
+		}
+	}
+	return nil, false
+}

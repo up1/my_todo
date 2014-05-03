@@ -92,3 +92,23 @@ func TestDuplicateSaveAndGetOne(t *testing.T) {
 		t.Errorf("Expected 1 task, got %v", len(allTask))
 	}
 }
+
+func TestSaveAndFindByID(t *testing.T) {
+	task, err := NewTask("My task")
+	if err != nil {
+		t.Errorf("New task : %v", err)
+	}
+
+	taskManager := NewTaskManager()
+	taskManager.save(task)
+
+	myTask, ok := taskManager.Find(task.ID)
+	if !ok {
+		t.Errorf("Task not found")
+	}
+
+	if *task != *myTask {
+		t.Errorf("Expected %v, got %v", task, myTask)
+	}
+
+}
