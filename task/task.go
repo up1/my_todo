@@ -17,6 +17,7 @@ func NewTask(title string) (*Task, error) {
 
 type TaskManager struct {
 	tasks []*Task
+	lastID int64
 }
 
 func NewTaskManager() *TaskManager {
@@ -24,8 +25,12 @@ func NewTaskManager() *TaskManager {
 }
 
 func (taskManager *TaskManager) save(task *Task) {
-	copy := *task
-	taskManager.tasks = append(taskManager.tasks, &copy)
+	if task.ID == 0 {
+		taskManager.lastID++
+		task.ID = taskManager.lastID
+		copy := *task
+		taskManager.tasks = append(taskManager.tasks, &copy)
+	}
 }
 
 func (taskManager *TaskManager) GetAll() []*Task {

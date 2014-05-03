@@ -76,3 +76,19 @@ func TestSaveUpdateWithDoneAndGet(t *testing.T) {
 		t.Errorf("Save task not done")
 	}
 }
+
+func TestDuplicateSaveAndGetOne(t *testing.T) {
+	task, err := NewTask("My task")
+	if err != nil {
+		t.Errorf("New task : %v", err)
+	}
+
+	taskManager := NewTaskManager()
+	taskManager.save(task)
+	taskManager.save(task)
+
+	allTask := taskManager.GetAll()
+	if len(allTask) != 1 {
+		t.Errorf("Expected 1 task, got %v", len(allTask))
+	}
+}
