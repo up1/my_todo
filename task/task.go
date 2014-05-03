@@ -28,15 +28,13 @@ func (taskManager *TaskManager) save(task *Task) error {
 	if task.ID == 0 {
 		taskManager.lastID++
 		task.ID = taskManager.lastID
-		copy := *task
-		taskManager.tasks = append(taskManager.tasks, &copy)
+		taskManager.tasks = append(taskManager.tasks, cloneTask(task))
 		return nil
 	}
 
 	for i, t := range taskManager.tasks {
 		if t.ID == task.ID {
-			copy := *task
-			taskManager.tasks[i] = &copy
+			taskManager.tasks[i] = cloneTask(task)
 			return nil
 		}
 	}	
@@ -50,9 +48,13 @@ func (taskManager *TaskManager) GetAll() []*Task {
 func (taskManager *TaskManager) Find(ID int64) (*Task, bool) {
 	for _, task := range taskManager.tasks {
 		if task.ID == ID {
-			copy := *task
-			return &copy, true
+			return cloneTask(task), true
 		}
 	}
 	return nil, false
+}
+
+func cloneTask(task *Task) *Task {
+	copy := *task
+	return &copy
 }
