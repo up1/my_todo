@@ -24,13 +24,23 @@ func NewTaskManager() *TaskManager {
 	return &TaskManager{}
 }
 
-func (taskManager *TaskManager) save(task *Task) {
+func (taskManager *TaskManager) save(task *Task) error {
 	if task.ID == 0 {
 		taskManager.lastID++
 		task.ID = taskManager.lastID
 		copy := *task
 		taskManager.tasks = append(taskManager.tasks, &copy)
+		return nil
 	}
+
+	for i, t := range taskManager.tasks {
+		if t.ID == task.ID {
+			copy := *task
+			taskManager.tasks[i] = &copy
+			return nil
+		}
+	}	
+	return fmt.Errorf("Unknown task")
 }
 
 func (taskManager *TaskManager) GetAll() []*Task {
@@ -40,7 +50,8 @@ func (taskManager *TaskManager) GetAll() []*Task {
 func (taskManager *TaskManager) Find(ID int64) (*Task, bool) {
 	for _, task := range taskManager.tasks {
 		if task.ID == ID {
-			return task, true
+			copy := *task
+			return &copy, true
 		}
 	}
 	return nil, false

@@ -110,5 +110,28 @@ func TestSaveAndFindByID(t *testing.T) {
 	if *task != *myTask {
 		t.Errorf("Expected %v, got %v", task, myTask)
 	}
+}
 
+
+func TestSaveFindAndEdit(t *testing.T) {
+	task, err := NewTask("My task")
+	if err != nil {
+		t.Errorf("New task : %v", err)
+	}
+
+	taskManager := NewTaskManager()
+	taskManager.save(task)
+
+	myTask, _ := taskManager.Find(task.ID)
+	myTask.Done = true
+	taskManager.save(myTask)
+
+	allTask := taskManager.GetAll()
+	if !allTask[0].Done {
+		t.Errorf("Save task not done")
+	}
+
+	if len(allTask) != 1 {
+		t.Errorf("Expected 1 task, got %v", len(allTask))
+	}
 }
