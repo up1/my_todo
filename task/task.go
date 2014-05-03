@@ -3,9 +3,9 @@ package task
 import "fmt"
 
 type Task struct {
-	ID		int64
-	Title	string
-	Done 	bool
+	ID    int64
+	Title string
+	Done  bool
 }
 
 func NewTask(title string) (*Task, error) {
