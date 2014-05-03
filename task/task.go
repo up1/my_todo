@@ -15,9 +15,8 @@ func NewTask(title string) (*Task, error) {
 	return &Task{0, title, false}, nil
 }
 
-
 type TaskManager struct {
-	task *Task
+	tasks []*Task
 }
 
 func NewTaskManager() *TaskManager {
@@ -25,9 +24,9 @@ func NewTaskManager() *TaskManager {
 }
 
 func (taskManager *TaskManager) save(task *Task) {
-	taskManager.task = task
+	taskManager.tasks = append(taskManager.tasks, task)
 }
 
 func (taskManager *TaskManager) GetAll() []*Task {
-	return []*Task{taskManager.task}
+	return taskManager.tasks
 }

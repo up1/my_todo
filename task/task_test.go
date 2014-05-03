@@ -39,4 +39,23 @@ func TestSaveOneTaskAndGetOne(t *testing.T) {
 	}
 }
 
+func TestSaveTwoAndGetTwo(t *testing.T) {
+	task1, err := NewTask("My task 1")
+	if err != nil {
+		t.Errorf("New task : %v", err)
+	}
 
+	task2, err := NewTask("My task 2")
+	if err != nil {
+		t.Errorf("New task : %v", err)
+	}
+
+	taskManager := NewTaskManager()
+	taskManager.save(task1)
+	taskManager.save(task2)
+
+	allTask := taskManager.GetAll()
+	if len(allTask) != 2 {
+		t.Errorf("Expected 2 task, got %v", len(allTask))
+	}
+}
