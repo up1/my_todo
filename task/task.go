@@ -24,7 +24,8 @@ func NewTaskManager() *TaskManager {
 }
 
 func (taskManager *TaskManager) save(task *Task) {
-	taskManager.tasks = append(taskManager.tasks, task)
+	copy := *task
+	taskManager.tasks = append(taskManager.tasks, &copy)
 }
 
 func (taskManager *TaskManager) GetAll() []*Task {
