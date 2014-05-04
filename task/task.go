@@ -24,7 +24,7 @@ func NewTaskManager() *TaskManager {
 	return &TaskManager{}
 }
 
-func (taskManager *TaskManager) save(task *Task) error {
+func (taskManager *TaskManager) Save(task *Task) error {
 	if task.ID == 0 {
 		taskManager.lastID++
 		task.ID = taskManager.lastID
