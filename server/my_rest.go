@@ -12,6 +12,12 @@ func main() {
 }
 
 func addHandler(w http.ResponseWriter, r *http.Request) {
+
+	if r.Method != "POST" {
+		http.Error(w, r.Method+" not allowed", http.StatusMethodNotAllowed)
+		return
+	}
+
 	type Task struct {
 		ID    int64
 		Title string
