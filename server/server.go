@@ -4,6 +4,8 @@ import (
 	"encoding/json"
 	"net/http"
 	"log"
+	"strconv"
+	"fmt"
 
 	"github.com/gorilla/mux"
 	"github.com/up1/my_todo/task"
@@ -17,6 +19,7 @@ func RegisterHandlers() {
 	route := mux.NewRouter()
 	route.HandleFunc(PathPrefix, errorHandler(ListTasks)).Methods("GET")
 	route.HandleFunc(PathPrefix, errorHandler(NewTask)).Methods("POST")
+	route.HandleFunc(PathPrefix + "{id}", errorHandler(UpdateTask)).Methods("PUT")
 	http.Handle(PathPrefix, route)
 }
 
@@ -56,6 +59,32 @@ func NewTask(w http.ResponseWriter, r *http.Request) error {
 		return badRequest{err}
 	}
 	return tasks.Save(t)
+}
+
+func UpdateTask(w http.ResponseWriter, r *http.Request) error {
+	id, err := parseID(r)
+	if err != nil {
+		return badRequest{err}
+	}
+	var t task.Task
+	if err := json.NewDecoder(r.Body).Decode(&t); err != nil {
+		return badRequest{err}
+	}
+	if t.ID != id {
+		return badRequest{fmt.Errorf("inconsistent task IDs")}
+	}
+	if _, ok := tasks.Find(id); !ok {
+		return notFound{}
+	}
+	return tasks.Save(&t)
+}
+
+func parseID(r *http.Request) (int64, error) {
+	txt, ok := mux.Vars(r)["id"]
+	if !ok {
+		return 0, fmt.Errorf("task id not found")
+	}
+	return strconv.ParseInt(txt, 10, 0)
 }
 
 func main() {
