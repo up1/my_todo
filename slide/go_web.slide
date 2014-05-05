@@ -1,0 +1,102 @@
+Building a web application
+with REST and AngularJS
+
+
+Somkiat Puisungnoen
+SPRINT3R
+@somkiat
+
+
+* Topics
+
+- Building REST APIs
+
+- Building Web UI with AngularJS
+
+
+* My TODO
+
+All code at
+	.link https://github.com/up1/my_todo
+
+All detail at my blog
+	.link http://www.somkiat.cc/tag/golang/
+
+
+* Building REST APIs
+
+* REST = HTTP + JSON (1)
+
+Go เตรียม package net/http ไว้ให้แล้ว สามารถเขียน code ได้ดังนี้
+
+.code rest_01.go
+
+* REST = HTTP + JSON (2)
+
+สามารถทำการตรวจสอบ pattern ของ request ได้ดังนี้
+
+.code rest_02.go
+
+* REST = HTTP + JSON (3)
+
+จัดการกับ JSON ด้วย package json ที่ Goเตรียมไว้ให้แล้วเช่นกัน
+
+.code rest_03.go
+
+* REST = HTTP + JSON (4)
+
+ทำการทดสอบผ่าน curl ได้ดังนี้
+
+เข้าผ่าน browser จะไม่สามารถทำงานได้
+
+	.link http://localhost:8080
+
+ให้ทำการทดสอบผ่าน curl หรือ REST Client
+
+	$ curl -X POST localhost:8080 -d "{\"ID\":1, \"Title\":\"My Name\", \"Done\":false}"
+
+
+* การจัดการ REST APIs ง่ายๆ ด้วย Gorilla/Mux
+
+สามารถดูรายละเอียดได้ที่นี่
+
+	.link https://github.com/gorilla/mux
+
+ตัวอย่าง code
+
+.code ../server/server.go /RegisterHandlers/,/^}/
+
+Listing all the tasks
+
+.code ../server/server.go /func ListTasks/,/^}/
+
+* Building Web UI with AngularJS
+
+* พัฒนา AngularJS เพื่อใช้งาน REST APIs
+
+UI ของระบบที่ต้องการสร้าง
+
+.image ui.png
+
+การดึงข้อมูลผ่าน HTTP GET
+
+	var refresh = function() {
+	    return $http.get('/task/').
+	      success(function(data) { $scope.tasks = data.Tasks; }).
+	      error(logError);
+	};
+
+การแก้ไขข้อมูลผ่าน HTTP PUT
+
+	$scope.toggleDone = function(task) {
+	    data = {ID: task.ID, Title: task.Title, Done: !task.Done}
+	    $http.put('/task/'+task.ID, data).
+	      error(logError).
+	      success(function() { task.Done = !task.Done });
+	};
+
+* ทำการ Deploy บน Web server
+
+.code ../client/my_client.go
+
+* Run Demo
