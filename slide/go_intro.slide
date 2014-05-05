@@ -1,5 +1,6 @@
 Go :: Simple Programming
 
+
 Somkiat Puisungnoen
 SPRINT3R
 @somkiat
@@ -23,7 +24,7 @@ SPRINT3R
 
 * Go คืออะไร
 
-- เรียบง่าย
+- ความเรียบง่าย
 - หลีกเลี่ยงการพัฒนาที่ซ้ำๆ
 - สามารถพัฒนาด้วยแนวคิด OOP ได้
 - ง่ายต่อการพัฒนาระบบ Concurency
