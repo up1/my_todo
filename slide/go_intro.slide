@@ -13,6 +13,7 @@ SPRINT3R
 สร้างโดยความต้องการของทีมภายใน Google
 
 ประกอบไปด้วย
+
 - ประสิทธิภาพ
 - ความปลอดภัย
 - Concurrency
@@ -34,16 +35,19 @@ SPRINT3R
 Go ปล่อยออกมาปี 2012
 ประกอบไปด้วย specification และ library ต่างๆ
 
-Official website อยู่ที่ www.golang.org
+Official website อยู่ที่ 
+   .link www.golang.org golang.org
 
 
 * ติดตั้ง Go กันได้แล้ว
 
-ทำการ download จาก www.golang.org
+ทำการ download จาก 
+   .link www.golang.org golang.org
+
 
 * สวัสดี Go กันหน่อย 
 
-.play hello.go /func main/,
+.play hello.go
 
 
 * เครื่องมือที่ใช้งาน
@@ -89,6 +93,7 @@ Build และ install package ต่างๆ
 	$ go get code.google.com/p/go.net/websocket
 
 ถ้าต้องการติดตั้ง package task
+
 	$ go get github.com/up1/my_todo/task
 
 
@@ -103,7 +108,8 @@ Build และ install package ต่างๆ
 
 ดังนั้นแนะนำให้ใช้อยู่เสมอ หรือทุกๆ ครั้งที่แก้ไข
 
-อ่านรายละเอียดเพิ่มเติมได้ที่ .link http://golang.org/cmd/gofmt/ Gofmt page
+อ่านรายละเอียดเพิ่มเติมได้ที่ 
+   .link http://golang.org/cmd/gofmt/ Gofmt page
 
 
 
