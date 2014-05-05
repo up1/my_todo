@@ -17,10 +17,12 @@ SPRINT3R
 * My TODO
 
 All code at
-	.link https://github.com/up1/my_todo
+
+.link https://github.com/up1/my_todo
 
 All detail at my blog
-	.link http://www.somkiat.cc/tag/golang/
+
+.link http://www.somkiat.cc/tag/golang/
 
 
 * Building REST APIs
@@ -41,15 +43,28 @@ Go เตรียม package net/http ไว้ให้แล้ว สาม�
 
 จัดการกับ JSON ด้วย package json ที่ Goเตรียมไว้ให้แล้วเช่นกัน
 
-.code rest_03.go
+	import (
+		"encoding/json"
+		"log"
+		"net/http"
+	)
+
+	func main() {
+		http.HandleFunc("/", addHandler)
+		http.ListenAndServe(":8080", nil)
+	}
 
 * REST = HTTP + JSON (4)
+
+.code ../example/my_rest.go /func addHandler/,/^}/
+
+* REST = HTTP + JSON (5)
 
 ทำการทดสอบผ่าน curl ได้ดังนี้
 
 เข้าผ่าน browser จะไม่สามารถทำงานได้
 
-	.link http://localhost:8080
+.link http://localhost:8080
 
 ให้ทำการทดสอบผ่าน curl หรือ REST Client
 
@@ -60,7 +75,7 @@ Go เตรียม package net/http ไว้ให้แล้ว สาม�
 
 สามารถดูรายละเอียดได้ที่นี่
 
-	.link https://github.com/gorilla/mux
+.link https://github.com/gorilla/mux
 
 ตัวอย่าง code
 
@@ -100,3 +115,5 @@ UI ของระบบที่ต้องการสร้าง
 .code ../client/my_client.go
 
 * Run Demo
+
+* Discussion

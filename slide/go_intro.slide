@@ -38,14 +38,14 @@ Go ปล่อยออกมาปี 2012
 
 Official website อยู่ที่ 
 
-   .link http://golang.org
+.link http://golang.org
 
 
 * ติดตั้ง Go กันได้แล้ว
 
 ทำการ download จาก 
 
-   .link http://golang.org
+.link http://golang.org
 
 
 * สวัสดี Go กันหน่อย 
@@ -113,8 +113,6 @@ Build และ install package ต่างๆ
 
 อ่านรายละเอียดเพิ่มเติมได้ที่ 
 
-   .link http://golang.org/cmd/gofmt/
+.link http://golang.org/cmd/gofmt/
 
-
-
-
+* Discussion
