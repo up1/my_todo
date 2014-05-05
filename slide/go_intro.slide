@@ -1,0 +1,110 @@
+Go :: Simple Programming
+
+Somkiat Puisungnoen
+SPRINT3R
+@somkiat
+
+
+* Introduction
+
+
+* ทำไมเราต้องการภาษาโปรแกรมใหม่ ?
+
+สร้างโดยความต้องการของทีมภายใน Google
+
+ประกอบไปด้วย
+- ประสิทธิภาพ
+- ความปลอดภัย
+- Concurrency
+- Scalability
+- Fast development cycle
+
+
+* Go คืออะไร
+
+- เรียบง่าย
+- หลีกเลี่ยงการพัฒนาที่ซ้ำๆ
+- สามารถพัฒนาด้วยแนวคิด OOP ได้
+- ง่ายต่อการพัฒนาระบบ Concurency
+- สร้างมาเพื่อให้ programmer ทำงานได้ง่าย
+
+
+* ประวัติความเป็นมา
+
+Go ปล่อยออกมาปี 2012
+ประกอบไปด้วย specification และ library ต่างๆ
+
+Official website อยู่ที่ www.golang.org
+
+
+* ติดตั้ง Go กันได้แล้ว
+
+ทำการ download จาก www.golang.org
+
+* สวัสดี Go กันหน่อย 
+
+.play hello.go /func main/,
+
+
+* เครื่องมือที่ใช้งาน
+
+* เครื่องมือที่จำเป็น
+
+Compile และ run โปรแกรม
+
+	$ go run hello.go
+
+Build และ install package ต่างๆ
+
+	$ go install
+
+
+* โครงสร้างของ package
+
+เนื่องจาก Go ไม่มีการ configuration อะไรเลย
+ดังนั้นโครงสร้างของ code จึงมีความสำคัญมาก
+โดยมีโครงสร้างมาตรฐาน ดังนี้
+
+	src/
+	  github.com/up1/my_todo/
+		task
+		  task.go
+
+ดังนั้นถ้าต้องการ import โปรแกรมจาก package todo 
+	
+	import "github.com/up1/my_todo/task"
+
+ถ้าต้องการติดตั้ง package task
+
+	$ go install github.com/up1/my_todo/task
+
+
+* Remote dependencies
+
+สามารถดึง package ผ่านทาง remote repository ได้
+ทั้ง Google code และ Github.com
+
+ทำการ download, build และติดตั้งด้วยคำสั่ง
+
+	$ go get code.google.com/p/go.net/websocket
+
+ถ้าต้องการติดตั้ง package task
+	$ go get github.com/up1/my_todo/task
+
+
+* Gofmt
+
+เป็นเครื่องมือสำหรับจัดรูปแบบของ code ตามรูปแบบมาตรฐาน
+
+ช่วยปรับปรุงให้ง่านต่อการอ่านและเขียน
+
+	$ gofmt -w task.go
+
+
+ดังนั้นแนะนำให้ใช้อยู่เสมอ หรือทุกๆ ครั้งที่แก้ไข
+
+อ่านรายละเอียดเพิ่มเติมได้ที่ .link http://golang.org/cmd/gofmt/ Gofmt page
+
+
+
+
