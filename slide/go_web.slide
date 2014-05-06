@@ -93,7 +93,7 @@ UI ของระบบที่ต้องการสร้าง
 
 .image ui.png
 
-การดึงข้อมูลผ่าน HTTP GET
+* การดึงข้อมูลผ่าน HTTP GET
 
 	var refresh = function() {
 	    return $http.get('/task/').
@@ -101,7 +101,7 @@ UI ของระบบที่ต้องการสร้าง
 	      error(logError);
 	};
 
-การแก้ไขข้อมูลผ่าน HTTP PUT
+* การแก้ไขข้อมูลผ่าน HTTP PUT
 
 	$scope.toggleDone = function(task) {
 	    data = {ID: task.ID, Title: task.Title, Done: !task.Done}
